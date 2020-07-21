@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pythonpod-test
+  labels:
+    env: python-testing
+spec:
+  selector:
+    env: python-testing
+  type: NodePort
+  ports:
+    - nodePort: 31001
+      port: 80
+      targetPort: 8000
