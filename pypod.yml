@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod 
+metadata:
+  name: pythonpod-test1
+  labels:
+    env: python-testing     
+spec:
+  containers:
+    - name: pythonpod-test
+      image: niraj1102/simplepython:latest
+      imagePullPolicy: Always
+      volumeMounts:
+        - name: log-loc
+          mountPath: /c/Users/Niraj/log-loc
+      ports:
+        - containerPort: 80
+          name: pythonpod-test
+  volumes:
+    - name: log-loc
+      persistentVolumeClaim:
+        claimName: log-loc
+ 
+
