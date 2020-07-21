@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod 
+metadata:
+  name: webpod-test1
+  labels:
+    env: web-testing     
+spec:
+  containers:
+    - name: webpod-test
+      image: niraj1102/simplehtml:latest
+      imagePullPolicy: Always
+      volumeMounts:
+        - name: log-loc
+          mountPath: /c/Users/Niraj/log-loc
+      ports:
+        - containerPort: 80
+          name: webpod-test
+  volumes:
+    - name: log-loc
+      persistentVolumeClaim:
+        claimName: log-loc
